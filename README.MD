@@ -113,4 +113,107 @@ print(X_filled)
 * Understand **decision boundaries**
 * Explore more ML models
 
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+## 🚀 Day 3: Logistic Regression & Error Analysis
+
+### 🧠 What I Learned
+
+* How a classification model (Logistic Regression) makes predictions
+* Concept of **decision boundary** (how model separates classes)
+* Importance of checking **model errors**, not just accuracy
+* Understanding **Confusion Matrix** to analyze prediction results
+* Learned how **outliers and inconsistent data** affect model performance
+
 ---
+
+### 💻 Code Example
+
+```python
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix, accuracy_score
+
+# Sample Data
+X = [[2], [4], [6], [8], [10]]
+y = [0, 0, 1, 1, 1]
+
+# Split Data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Train Model
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+# Predictions
+y_pred = model.predict(X_test)
+
+print("Predictions:", y_pred)
+print("Actual:", y_test)
+
+# Accuracy
+print("Accuracy:", accuracy_score(y_test, y_pred))
+
+# Confusion Matrix
+print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
+```
+
+---
+
+### 🔍 Confusion Matrix Explained
+
+```text
+[[TN  FP]
+ [FN  TP]]
+```
+
+* **TN (True Negative):** Correctly predicted class 0
+* **FP (False Positive):** Incorrectly predicted class 1
+* **FN (False Negative):** Incorrectly predicted class 0
+* **TP (True Positive):** Correctly predicted class 1
+
+👉 Diagonal values = correct predictions
+👉 Off-diagonal values = errors
+
+---
+
+### ⚠️ Key Insight
+
+* Models do not always predict perfectly
+* Errors can occur due to:
+
+  * insufficient data
+  * inconsistent patterns
+  * outliers
+
+---
+
+### 📌 Experiment Done
+
+Tested model behavior with unusual data:
+
+```python
+X = [[1], [2], [3], [100]]
+y = [0, 0, 1, 1]
+```
+
+👉 Observed how **outliers affect predictions**
+
+---
+
+### 🎯 Key Takeaways
+
+* Understanding **why a model makes mistakes** is more important than just accuracy
+* Confusion Matrix helps in identifying **type of errors**
+* Data quality directly impacts model performance
+
+---
+
+### 📌 Next Plan
+
+* Learn **Decision Tree model**
+* Compare it with Logistic Regression
+* Understand different model behaviors
+
